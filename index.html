@@ -71,11 +71,12 @@
 </head>
 <body class="antialiased selection:bg-brand-rust selection:text-brand-lightbeige">
 
+    <!-- Navbar -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 bg-transparent text-white py-6">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center relative z-50">
             
             <a href="#inicio" class="flex items-center gap-4 group">
-                <img src="imagenes/Logo-alamos.png" alt="Logo Álamos" class="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105 rounded-full" />
+                <img src="imagenes/Logo-alamos.png" alt="Logo Álamos" class="h-10 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105 rounded-full" onerror="this.src='https://via.placeholder.com/50x50?text=A'" />
                 <span class="font-serif text-2xl md:text-3xl tracking-wide font-medium">Álamos</span>
             </a>
             
@@ -89,26 +90,36 @@
             </div>
 
             <!-- Mobile Menu Button -->
-            <button class="md:hidden focus:outline-none hover:opacity-70 transition-opacity">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <button id="mobile-menu-btn" class="md:hidden focus:outline-none hover:opacity-70 transition-opacity">
+                <!-- Ícono Hamburguesa -->
+                <svg id="icon-menu" class="w-8 h-8 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <!-- Ícono Cerrar (Oculto por defecto) -->
+                <svg id="icon-close" class="w-8 h-8 hidden transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-brand-darkbrown text-brand-beige flex-col items-center justify-center space-y-8 opacity-0 pointer-events-none transition-opacity duration-300 z-40 hidden">
+            <a href="#inicio" class="mobile-link text-lg uppercase tracking-[0.2em] hover:text-brand-rust transition-colors">Inicio</a>
+            <a href="#proyecto" class="mobile-link text-lg uppercase tracking-[0.2em] hover:text-brand-rust transition-colors">El Proyecto</a>
+            <a href="#masterplan" class="mobile-link text-lg uppercase tracking-[0.2em] hover:text-brand-rust transition-colors">Masterplan</a>
+            <a href="#ubicacion" class="mobile-link text-lg uppercase tracking-[0.2em] hover:text-brand-rust transition-colors">Ubicación</a>
+            <a href="#contacto" class="mobile-link text-lg uppercase tracking-[0.2em] border border-brand-beige px-10 py-3 mt-4 hover:bg-brand-beige hover:text-brand-darkbrown transition-colors">Contacto</a>
         </div>
     </nav>
 
+    <!-- Inicio -->
     <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image (Nature/Trees vibe) -->
         <div class="absolute inset-0 z-0 bg-brand-darkbrown">
-            <img src="imagenes/AlamosEntrada.jpg" alt="Arboleda majestuosa" class="w-full h-full object-cover transform scale-105 animate-[kenburns_20s_ease-out_forwards] mix-blend-overlay opacity-80">
-            <!-- Elegant Brown/Rust Overlay -->
+            <img src="imagenes/AlamosEntrada.jpg" alt="Arboleda majestuosa" class="w-full h-full object-cover transform scale-105 animate-[kenburns_20s_ease-out_forwards] mix-blend-overlay opacity-80" onerror="this.src='https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2074&auto=format&fit=crop'">
             <div class="absolute inset-0 bg-gradient-to-b from-brand-darkbrown/80 via-brand-rust/40 to-brand-darkbrown/90"></div>
         </div>
         
-        <!-- Hero Content -->
-        <div class="relative z-10 text-center text-white px-6 max-w-5xl mx-auto flex flex-col items-center mt-16">
+        <div class="relative z-10 text-center text-white px-6 max-w-5xl mx-auto flex flex-col items-center mt-16 md:mt-24">
             <div class="fade-in flex items-center justify-center space-x-4 mb-6">
-                <div class="w-8 h-[1px] bg-brand-lightbeige/60"></div>
+                <div class="w-6 md:w-8 h-[1px] bg-brand-lightbeige/60"></div>
                 <span class="uppercase tracking-[0.3em] text-xs md:text-sm font-light text-brand-lightbeige">Maipú, Mendoza</span>
-                <div class="w-8 h-[1px] bg-brand-lightbeige/60"></div>
+                <div class="w-6 md:w-8 h-[1px] bg-brand-lightbeige/60"></div>
             </div>
             
             <h1 class="fade-in delay-100 font-serif text-5xl md:text-7xl lg:text-[5.5rem] mb-6 font-medium leading-[1.1]">
@@ -116,13 +127,12 @@
                 <span class="italic font-light">Álamos</span>
             </h1>
             
-            <p class="fade-in delay-200 text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto opacity-90 leading-relaxed">
+            <p class="fade-in delay-200 text-base md:text-xl font-light tracking-wide max-w-2xl mx-auto opacity-90 leading-relaxed">
                 El equilibrio perfecto entre la serenidad de la naturaleza <br class="hidden md:block">y la sofisticación de un diseño urbanístico de excelencia.
             </p>
         </div>
         
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10 fade-in delay-400">
+        <div class="absolute bottom-10 md:bottom-12 left-1/2 transform -translate-x-1/2 z-10 fade-in delay-400">
             <a href="#proyecto" class="flex flex-col items-center text-white/70 hover:text-white transition-colors duration-300">
                 <span class="text-[10px] uppercase tracking-[0.2em] mb-3">Descubrir</span>
                 <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -130,125 +140,111 @@
         </div>
     </section>
 
-    <section id="proyecto" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+    <!-- El Proyecto -->
+    <section id="proyecto" class="py-20 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
-            <!-- Left Text Column -->
-            <div class="lg:col-span-5 fade-in sticky top-32">
+            <div class="lg:col-span-5 fade-in lg:sticky lg:top-32 text-center lg:text-left">
                 <span class="uppercase tracking-[0.2em] text-xs font-semibold text-brand-rust/90 mb-4 block">Estilo de Vida</span>
-                <h2 class="font-serif text-4xl md:text-5xl text-brand-darkbrown mb-8 leading-tight">
+                <h2 class="font-serif text-4xl md:text-5xl text-brand-darkbrown mb-6 md:mb-8 leading-tight">
                     Calma y seguridad <br>
                     <span class="italic font-light text-brand-rust">a minutos de la ciudad</span>
                 </h2>
-                <div class="w-16 h-[1px] bg-brand-rust/40 mb-8"></div>
-                <p class="text-brand-darkbrown/80 font-light leading-relaxed mb-6 text-lg">
+                <div class="w-16 h-[1px] bg-brand-rust/40 mb-6 md:mb-8 mx-auto lg:mx-0"></div>
+                <p class="text-brand-darkbrown/80 font-light leading-relaxed mb-6 text-base md:text-lg">
                     Álamos es un desarrollo exclusivo de terrenos, diseñado para quienes buscan alejarse del ruido urbano. Un lienzo en blanco con aval de Mutual MEBNA, brindando total libertad para diseñar la residencia de sus sueños.
                 </p>
-                <p class="text-brand-darkbrown/80 font-light leading-relaxed text-lg">
+                <p class="text-brand-darkbrown/80 font-light leading-relaxed text-base md:text-lg">
                     Aquí la majestuosidad de la arboleda se complementa con un complejo deportivo y social privado, asegurando un estilo de vida pleno sin salir de la seguridad de su entorno.
                 </p>
             </div>
 
-            <!-- Right Grid Column -->
-            <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 mt-8 lg:mt-0">
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-12 lg:gap-y-16 mt-8 lg:mt-0">
                 
-                <div class="fade-in delay-100 flex flex-col items-start group">
-                    <div class="w-14 h-14 rounded-full border border-brand-rust/30 flex items-center justify-center mb-6 group-hover:bg-brand-rust group-hover:text-brand-beige transition-colors duration-500">
-                        <svg class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
+                <!-- Ítems (Mismo contenido, optimizado layout móvil) -->
+                <div class="fade-in delay-100 flex flex-col items-center sm:items-start text-center sm:text-left group">
+                    <div class="w-14 h-14 rounded-full border border-brand-rust/30 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-brand-rust group-hover:text-brand-beige transition-colors duration-500">
+                        <svg class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
                     </div>
-                    <h3 class="font-serif text-2xl text-brand-darkbrown mb-3">Entorno Privilegiado</h3>
-                    <p class="text-base font-light text-brand-darkbrown/70 leading-relaxed">Arboledas históricas que brindan sombra, frescura y un paisaje inigualable durante las cuatro estaciones.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-brand-darkbrown mb-2 sm:mb-3">Entorno Privilegiado</h3>
+                    <p class="text-sm md:text-base font-light text-brand-darkbrown/70 leading-relaxed">Arboledas históricas que brindan sombra, frescura y un paisaje inigualable durante las cuatro estaciones.</p>
                 </div>
 
-                <div class="fade-in delay-200 flex flex-col items-start group">
-                    <div class="w-14 h-14 rounded-full border border-brand-rust/30 flex items-center justify-center mb-6 group-hover:bg-brand-rust group-hover:text-brand-beige transition-colors duration-500">
-                        <svg class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                        </svg>
+                <div class="fade-in delay-200 flex flex-col items-center sm:items-start text-center sm:text-left group">
+                    <div class="w-14 h-14 rounded-full border border-brand-rust/30 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-brand-rust group-hover:text-brand-beige transition-colors duration-500">
+                        <svg class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                     </div>
-                    <h3 class="font-serif text-2xl text-brand-darkbrown mb-3">Urbanización Premium</h3>
-                    <p class="text-base font-light text-brand-darkbrown/70 leading-relaxed">Calles amplias, pórtico de ingreso jerarquizado y distribución inteligente de los espacios comunes.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-brand-darkbrown mb-2 sm:mb-3">Urbanización Premium</h3>
+                    <p class="text-sm md:text-base font-light text-brand-darkbrown/70 leading-relaxed">Calles amplias, pórtico de ingreso jerarquizado y distribución inteligente de los espacios comunes.</p>
                 </div>
 
-                <div class="fade-in delay-300 flex flex-col items-start group">
-                    <div class="w-14 h-14 rounded-full border border-brand-rust/30 flex items-center justify-center mb-6 group-hover:bg-brand-rust group-hover:text-brand-beige transition-colors duration-500">
-                        <svg class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
+                <div class="fade-in delay-300 flex flex-col items-center sm:items-start text-center sm:text-left group">
+                    <div class="w-14 h-14 rounded-full border border-brand-rust/30 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-brand-rust group-hover:text-brand-beige transition-colors duration-500">
+                        <svg class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h3 class="font-serif text-2xl text-brand-darkbrown mb-3">Servicios Subterráneos</h3>
-                    <p class="text-base font-light text-brand-darkbrown/70 leading-relaxed">Instalaciones de luz, agua, gas y red de desagües sanitarios.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-brand-darkbrown mb-2 sm:mb-3">Servicios Subterráneos</h3>
+                    <p class="text-sm md:text-base font-light text-brand-darkbrown/70 leading-relaxed">Instalaciones de luz, agua, gas y red de desagües sanitarios.</p>
                 </div>
 
-                <div class="fade-in delay-400 flex flex-col items-start group">
-                    <div class="w-14 h-14 rounded-full border border-brand-rust/30 flex items-center justify-center mb-6 group-hover:bg-brand-rust group-hover:text-brand-beige transition-colors duration-500">
-                        <svg class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
+                <div class="fade-in delay-400 flex flex-col items-center sm:items-start text-center sm:text-left group">
+                    <div class="w-14 h-14 rounded-full border border-brand-rust/30 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-brand-rust group-hover:text-brand-beige transition-colors duration-500">
+                        <svg class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                     </div>
-                    <h3 class="font-serif text-2xl text-brand-darkbrown mb-3">Seguridad 24hs</h3>
-                    <p class="text-base font-light text-brand-darkbrown/70 leading-relaxed">Cierre perimetral de máxima seguridad y control de accesos estricto para su absoluta tranquilidad.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-brand-darkbrown mb-2 sm:mb-3">Seguridad 24hs</h3>
+                    <p class="text-sm md:text-base font-light text-brand-darkbrown/70 leading-relaxed">Cierre perimetral de máxima seguridad y control de accesos estricto para su absoluta tranquilidad.</p>
                 </div>
 
-                <!-- Nuevo Item: Deportes -->
-                <div class="fade-in delay-500 flex flex-col items-start group">
-                    <div class="w-14 h-14 rounded-full border border-brand-rust/30 flex items-center justify-center mb-6 group-hover:bg-brand-rust group-hover:text-brand-beige transition-colors duration-500">
-                        <svg class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
-                        </svg>
+                <div class="fade-in delay-500 flex flex-col items-center sm:items-start text-center sm:text-left group">
+                    <div class="w-14 h-14 rounded-full border border-brand-rust/30 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-brand-rust group-hover:text-brand-beige transition-colors duration-500">
+                        <svg class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" /></svg>
                     </div>
-                    <h3 class="font-serif text-2xl text-brand-darkbrown mb-3">Deportes Exclusivos</h3>
-                    <p class="text-base font-light text-brand-darkbrown/70 leading-relaxed">Canchas de pádel y fútbol de nivel profesional dentro del predio, fomentando un estilo de vida activo y saludable.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-brand-darkbrown mb-2 sm:mb-3">Deportes Exclusivos</h3>
+                    <p class="text-sm md:text-base font-light text-brand-darkbrown/70 leading-relaxed">Canchas de pádel y fútbol de nivel profesional dentro del predio, fomentando un estilo de vida activo y saludable.</p>
                 </div>
 
-                <!-- Nuevo Item: Quincho/Social -->
-                <div class="fade-in delay-600 flex flex-col items-start group">
-                    <div class="w-14 h-14 rounded-full border border-brand-rust/30 flex items-center justify-center mb-6 group-hover:bg-brand-rust group-hover:text-brand-beige transition-colors duration-500">
-                        <svg class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
+                <div class="fade-in delay-600 flex flex-col items-center sm:items-start text-center sm:text-left group">
+                    <div class="w-14 h-14 rounded-full border border-brand-rust/30 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-brand-rust group-hover:text-brand-beige transition-colors duration-500">
+                        <svg class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
                     </div>
-                    <h3 class="font-serif text-2xl text-brand-darkbrown mb-3">Quincho y Encuentros</h3>
-                    <p class="text-base font-light text-brand-darkbrown/70 leading-relaxed">Un quincho social completamente equipado, ideal para celebraciones, reuniones y fines de semana en familia.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-brand-darkbrown mb-2 sm:mb-3">Quincho y Encuentros</h3>
+                    <p class="text-sm md:text-base font-light text-brand-darkbrown/70 leading-relaxed">Un quincho social completamente equipado, ideal para celebraciones, reuniones y fines de semana en familia.</p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <section id="masterplan" class="py-32 bg-brand-lightbeige border-y border-brand-rust/10">
+    <!-- Masterplan -->
+    <section id="masterplan" class="py-20 lg:py-32 bg-brand-lightbeige border-y border-brand-rust/10">
         <div class="max-w-[90rem] mx-auto px-6 lg:px-12">
-            <div class="text-center fade-in mb-16">
+            <div class="text-center fade-in mb-12 lg:mb-16">
                 <span class="uppercase tracking-[0.2em] text-xs font-semibold text-brand-rust/90 mb-3 block">Organización Espacial</span>
                 <h2 class="font-serif text-4xl md:text-5xl text-brand-darkbrown">Masterplan</h2>
-                <div class="w-16 h-[1px] bg-brand-rust mx-auto mt-8 opacity-50"></div>
-                <p class="mt-8 text-brand-darkbrown/70 font-light max-w-2xl mx-auto">Explore la distribución de Álamos, donde cada lote ha sido trazado para respetar el entorno natural y optimizar la convivencia.</p>
+                <div class="w-16 h-[1px] bg-brand-rust mx-auto mt-6 lg:mt-8 opacity-50"></div>
+                <p class="mt-6 lg:mt-8 text-brand-darkbrown/70 font-light max-w-2xl mx-auto text-sm md:text-base">Explore la distribución de Álamos, donde cada lote ha sido trazado para respetar el entorno natural y optimizar la convivencia.</p>
             </div>
             
-            <div class="fade-in delay-200 relative group max-w-6xl mx-auto">
-                <div class="absolute -inset-2 bg-gradient-to-r from-brand-rust/20 to-brand-darkbrown/10 rounded-2xl blur-lg opacity-50 group-hover:opacity-100 transition duration-1000"></div>
-                <img src="imagenes/mapa_alamos.jfif" alt="Masterplan Barrio Privado Álamos" 
-                     class="relative w-full rounded-xl shadow-2xl object-cover border border-white/40">
+            <div class="fade-in delay-200 relative group max-w-6xl mx-auto px-2 md:px-0">
+                <div class="absolute -inset-2 bg-gradient-to-r from-brand-rust/20 to-brand-darkbrown/10 rounded-2xl blur-lg opacity-50 group-hover:opacity-100 transition duration-1000 hidden md:block"></div>
+                <img src="imagenes/mapa_alamos.jfif" alt="Masterplan Barrio Privado Álamos" class="relative w-full rounded-xl shadow-2xl object-cover border border-white/40" onerror="this.src='https://via.placeholder.com/1200x800?text=Mapa+del+Masterplan'">
             </div>
         </div>
     </section>
 
-    <!-- Nueva Sección de Ubicación -->
-    <section id="ubicacion" class="py-32 bg-white">
+    <!-- Ubicación -->
+    <section id="ubicacion" class="py-20 lg:py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="text-center fade-in mb-16">
+            <div class="text-center fade-in mb-12 lg:mb-16">
                 <span class="uppercase tracking-[0.2em] text-xs font-semibold text-brand-rust/90 mb-3 block">Accesibilidad</span>
                 <h2 class="font-serif text-4xl md:text-5xl text-brand-darkbrown">Ubicación Estratégica</h2>
-                <div class="w-16 h-[1px] bg-brand-rust mx-auto mt-8 opacity-50"></div>
-                <p class="mt-8 text-brand-darkbrown/70 font-light max-w-2xl mx-auto">
+                <div class="w-16 h-[1px] bg-brand-rust mx-auto mt-6 lg:mt-8 opacity-50"></div>
+                <p class="mt-6 lg:mt-8 text-brand-darkbrown/70 font-light max-w-2xl mx-auto text-sm md:text-base">
                     Situado en una zona privilegiada, garantizando la paz y armonía de la naturaleza, sin perder la conexión directa y rápida con la ciudad.
                 </p>
             </div>
             
-            <div class="fade-in delay-200 w-full h-[400px] md:h-[500px] max-w-5xl mx-auto rounded-xl overflow-hidden shadow-xl border border-brand-rust/10 relative z-10 group">
-                <div class="absolute inset-0 border-4 border-transparent group-hover:border-brand-rust/20 transition-colors duration-500 rounded-xl pointer-events-none z-20"></div>
+            <div class="fade-in delay-200 w-full h-[350px] md:h-[500px] max-w-5xl mx-auto rounded-xl overflow-hidden shadow-xl border border-brand-rust/10 relative z-10 group">
+                <div class="absolute inset-0 border-4 border-transparent group-hover:border-brand-rust/20 transition-colors duration-500 rounded-xl pointer-events-none z-20 hidden md:block"></div>
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2958.620806215204!2d-68.6375485!3d-32.99263869999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e6d5c80ebfdfb%3A0xc223f11fd408d3ad!2sLOS%20ALAMOS%20BARRIO%20PRIVADO!5e1!3m2!1ses-419!2sar!4v1791212834797!5m2!1ses-419!2sar" 
                     class="w-full h-full border-0 grayscale-[20%] contrast-[1.1] hover:grayscale-0 transition-all duration-700" 
@@ -260,12 +256,13 @@
         </div>
     </section>
 
-    <section id="contacto" class="py-32 bg-brand-beige">
+    <!-- Contacto -->
+    <section id="contacto" class="py-20 lg:py-32 bg-brand-beige">
         <div class="max-w-4xl mx-auto px-6 lg:px-12">
-            <div class="text-center fade-in mb-12">
+            <div class="text-center fade-in mb-10 md:mb-12">
                 <span class="uppercase tracking-[0.2em] text-xs font-semibold text-brand-rust/90 mb-3 block">Atención Comercial</span>
                 <h2 class="font-serif text-4xl md:text-5xl text-brand-darkbrown mb-6">Proyecte su Futuro</h2>
-                <p class="text-brand-darkbrown/70 font-light text-lg max-w-xl mx-auto">
+                <p class="text-brand-darkbrown/70 font-light text-base md:text-lg max-w-xl mx-auto">
                     Con el respaldo de Mutual MEBNA. Nuestros asesores comerciales están a su disposición para brindarle detalles sobre disponibilidad de lotes, valores y planes de financiación.
                 </p>
             </div>
@@ -274,24 +271,25 @@
                 <a href="https://wa.me/5492613896838?text=Hola,%20quisiera%20más%20información%20sobre%20el%20Barrio%20Privado%20Álamos." 
                    target="_blank" 
                    rel="noopener noreferrer"
-                   class="hover-pulse flex items-center justify-center space-x-4 bg-brand-rust text-brand-lightbeige px-10 py-5 rounded-sm shadow-xl hover:bg-brand-darkbrown transition-all duration-300">
+                   class="hover-pulse flex items-center justify-center space-x-3 md:space-x-4 bg-brand-rust text-brand-lightbeige px-6 md:px-10 py-4 md:py-5 rounded-sm shadow-xl hover:bg-brand-darkbrown transition-all duration-300 w-full sm:w-auto">
                     
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                     </svg>
-                    <span class="text-sm tracking-widest uppercase font-medium">Contactar Ventas</span>
+                    <span class="text-xs md:text-sm tracking-widest uppercase font-medium">Contactar Ventas</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <footer class="bg-brand-darkbrown text-brand-beige py-12">
+    <!-- Footer -->
+    <footer class="bg-brand-darkbrown text-brand-beige py-10 md:py-12">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center text-xs font-light tracking-wide opacity-70">
-            <div class="mb-6 md:mb-0 text-center md:text-left">
-                <span class="font-serif text-xl font-medium block md:inline mb-2 md:mb-0 mr-4 opacity-100">Álamos</span>
-                Un desarrollo de Mutual MEBNA en Mendoza.
+            <div class="mb-4 md:mb-0 text-center md:text-left flex flex-col md:flex-row items-center">
+                <span class="font-serif text-xl font-medium mb-1 md:mb-0 md:mr-4 opacity-100">Álamos</span>
+                <span>Un desarrollo de Mutual MEBNA en Mendoza.</span>
             </div>
-            <div class="flex space-x-6">
+            <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-center">
                 <a href="#" class="hover:text-white transition-colors">Políticas de Privacidad</a>
                 <span>&copy; 2026 Todos los derechos reservados.</span>
             </div>
@@ -300,16 +298,71 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Variables Navbar
             const navbar = document.getElementById('navbar');
             const navBtn = document.getElementById('nav-btn');
+            
+            // Variables Menú Móvil
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconMenu = document.getElementById('icon-menu');
+            const iconClose = document.getElementById('icon-close');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            let isMenuOpen = false;
 
+            // Lógica Menú Móvil
+            function toggleMobileMenu() {
+                isMenuOpen = !isMenuOpen;
+                
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove('hidden');
+                    // Pequeño retraso para que la transición de opacidad funcione
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                        mobileMenu.classList.add('opacity-100', 'flex');
+                    }, 10);
+                    
+                    iconMenu.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
+                    mobileBtn.classList.remove('text-brand-darkbrown');
+                    mobileBtn.classList.add('text-brand-lightbeige'); // Contraste cuando el menú está abierto
+                } else {
+                    mobileMenu.classList.remove('opacity-100');
+                    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                    
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('flex');
+                    }, 300); // Mismo tiempo que duration-300
+                    
+                    iconMenu.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                    
+                    // Restaurar color del botón de menú según el scroll
+                    if (window.scrollY > 50) {
+                        mobileBtn.classList.add('text-brand-darkbrown');
+                        mobileBtn.classList.remove('text-brand-lightbeige');
+                    }
+                }
+            }
+
+            mobileBtn.addEventListener('click', toggleMobileMenu);
+
+            // Cerrar menú al hacer click en un enlace
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isMenuOpen) toggleMobileMenu();
+                });
+            });
+
+            // Lógica Scroll Navbar
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     navbar.classList.remove('bg-transparent', 'text-white', 'py-6');
                     navbar.classList.add('bg-brand-lightbeige', 'text-brand-darkbrown', 'shadow-sm', 'py-4', 'border-b', 'border-brand-rust/10');
                     
                     navbar.querySelectorAll('a, span, svg').forEach(el => {
-                        if(el.id !== 'nav-btn') {
+                        if(el.id !== 'nav-btn' && el.id !== 'icon-menu' && el.id !== 'icon-close') {
                             el.classList.remove('text-white');
                             el.classList.add('text-brand-darkbrown');
                         }
@@ -317,12 +370,17 @@
 
                     navBtn.classList.remove('hover:bg-white', 'hover:text-brand-darkbrown');
                     navBtn.classList.add('border-brand-darkbrown', 'hover:bg-brand-darkbrown', 'hover:text-brand-lightbeige');
+                    
+                    if (!isMenuOpen) {
+                        mobileBtn.classList.add('text-brand-darkbrown');
+                        mobileBtn.classList.remove('text-white');
+                    }
                 } else {
                     navbar.classList.add('bg-transparent', 'text-white', 'py-6');
                     navbar.classList.remove('bg-brand-lightbeige', 'text-brand-darkbrown', 'shadow-sm', 'py-4', 'border-b', 'border-brand-rust/10');
                     
                     navbar.querySelectorAll('a, span, svg').forEach(el => {
-                         if(el.id !== 'nav-btn') {
+                         if(el.id !== 'nav-btn' && el.id !== 'icon-menu' && el.id !== 'icon-close') {
                             el.classList.add('text-white');
                             el.classList.remove('text-brand-darkbrown');
                         }
@@ -330,9 +388,15 @@
 
                     navBtn.classList.add('hover:bg-white', 'hover:text-brand-darkbrown');
                     navBtn.classList.remove('border-brand-darkbrown', 'hover:bg-brand-darkbrown', 'hover:text-brand-lightbeige');
+                    
+                    if (!isMenuOpen) {
+                        mobileBtn.classList.remove('text-brand-darkbrown');
+                        mobileBtn.classList.add('text-white');
+                    }
                 }
             });
 
+            // Intersection Observer (Animaciones al hacer Scroll)
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
